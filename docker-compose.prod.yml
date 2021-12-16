@@ -10,7 +10,7 @@ services:
         - NODE_ENV=production
     environment:
       - NODE_ENV=production
-      - MONGO_USER=gigboy
-      - MONGO_PASSWORD=PASSWORD
-      - SESSION_SECRET=secret
+      - MONGO_USER=${MONGO_USER}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - SESSION_SECRET=${MONGO_SECRET}
     command: node index.js
