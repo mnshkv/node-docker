@@ -49,8 +49,7 @@ connectWithRetry();
 const port = process.env.PORT || 3000;
 
 app.get("/api", (req, res) => {
-  res.send("<h2>Hello World!!!</h2>");
-  console.log("yeah it ran");
+  res.send("<h2>raspberry pi docker swarm</h2>");
 })
 
 app.use("/api/v1/posts", postRouter);
