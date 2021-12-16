@@ -19,9 +19,6 @@ services:
 
   mongo-db:
     image: mongo
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=gigboy
-      - MONGO_INITDB_ROOT_PASSWORD=PASSWORD
     volumes:
       - mongo-gigboy:/data/db:rw
   redis:
