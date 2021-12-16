@@ -10,6 +10,7 @@ services:
       - node-app
 
   node-app:
+    build: .
     image: mnshkv/node-app
     environment:
       - PORT=3000
