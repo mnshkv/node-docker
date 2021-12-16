@@ -19,7 +19,7 @@ services:
       - redis
 
   mongo-db:
-    image: mongo
+    image: mongo:4.2-bionic
     volumes:
       - mongo-gigboy:/data/db:rw
   redis:
