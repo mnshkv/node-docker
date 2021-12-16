@@ -1,7 +1,7 @@
 version: '3'
 services:
   nginx:
-    image: nginx:stable-alpine
+    image: arm64v8/nginx:stable-alpine
     ports:
       - "3000:80"
     volumes:
@@ -19,11 +19,11 @@ services:
       - redis
 
   mongo-db:
-    image: mongo:4.2-bionic
+    image: arm64v8/mongo:4.2-bionic
     volumes:
       - mongo-gigboy:/data/db:rw
   redis:
-    image: redis
+    image: arm64v8/redis
 
 volumes:
   mongo-gigboy: null
