@@ -1,7 +1,7 @@
 version: '3'
 services:
   nginx:
-    restart: unless-stopped
+    restart: always
     volumes:
       - ./nginx/prod.conf:/etc/nginx/conf.d/default.conf:rw
       - ./data/certbot/conf:/etc/letsencrypt
@@ -11,9 +11,10 @@ services:
       - "443:443"
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done &
       nginx -g \"daemon off;\"'"
+
   certbot:
     image: certbot/certbot
-    restart: unless-stopped
+    restart: always
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
@@ -23,8 +24,6 @@ services:
   node-app:
     deploy:
       replicas: 2
-      restart_policy:
-        condition: any
       update_config:
         parallelism: 2
         delay: 15s
