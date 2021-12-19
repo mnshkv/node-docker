@@ -28,7 +28,6 @@ services:
     command: node index.js
     labels:
       - traefik.http.routers.node-app.rule=(`${DOMAIN}`)
-      - traefik.http.services.node-app.loadbalancer.server.port=8080
       - traefik.http.routers.node-app.entrypoints=web
       - traefik.http.routers.node-app.entrypoints=websecure
       - traefik.http.routers.node-app.tls.certresolver=myresolver
