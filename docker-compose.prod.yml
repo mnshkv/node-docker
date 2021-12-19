@@ -11,6 +11,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./:/etc/traefik
+    labels:
+      - traefik.http.services.node-app.loadbalancer.server.port=80
 
   node-app:
     deploy:
