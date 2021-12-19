@@ -1,5 +1,6 @@
 providers:
-  docker: true
+  docker: 
+    swarmMode: true
   # Говорит traefik'у, что мы работаем с docker
 
 entrypoints:
