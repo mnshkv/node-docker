@@ -2,9 +2,12 @@ version: '3'
 services:
   traefik:
     image: arm64v8/traefik:latest
-    restart: always
     ports:
       - "80:80"
+      - "443:443"
+    environment:
+      - REGRU_USERNAME=${REGRU_USERNAME}
+      - REGRU_PASSWORD=${REGRU_PASSWORD}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./:/etc/traefik
@@ -16,11 +19,6 @@ services:
         parallelism: 2
         delay: 15s
 
-    build:
-      context: .
-      args:
-        - NODE_ENV=production
-
     environment:
       - NODE_ENV=production
       - MONGO_USER=${MONGO_USER}
@@ -31,6 +29,8 @@ services:
     labels:
       - "traefik.http.routers.node-app.rule=(`${DOMAIN}`)"
       - "traefik.http.routers.node-app.entrypoints=web"
+      - "traefik.http.routers.node-app.entrypoints=websecure"
+      - "traefik.http.routers.node-app.tls.certresolver=myresolver"
 
   mongo-db:
     environment:
